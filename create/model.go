@@ -469,7 +469,6 @@ const modelHandler = `package $1
 
 import (
 	"net/http"
-	"strconv"
 
 	"github.com/cgalvisleon/elvis/cache"
 	"github.com/cgalvisleon/elvis/console"
