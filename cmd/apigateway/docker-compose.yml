@@ -1,0 +1,37 @@
+version: "3"
+
+networks:
+  net:
+    name: proxy
+    external: true
+
+services:
+  module:
+    image: apigateway:latest
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "2"
+    networks:
+      - net
+    ports:
+      - 3300:3300
+    environment:
+      PORT: 3300
+      PORT_RPC: 4200
+      # DB
+      DB_DRIVE: postgres
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: test
+      DB_USER: test
+      DB_PASSWORD: test
+      # REDIS
+      REDIS_HOST: redis:6379
+      REDIS_PASSWORD: test
+      REDIS_DB: 0
+      # NATS
+      NATS_HOST: nats:4222
+      # CALM
+      SECRET: test
